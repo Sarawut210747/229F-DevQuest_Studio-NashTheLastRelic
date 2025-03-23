@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // รับค่าการกดปุ่ม
-        float moveX = Input.GetAxisRaw("Horizontal");  // เปลี่ยนจาก GetAxis เป็น GetAxisRaw เพื่อลดความหน่วง
+        float moveX = Input.GetAxisRaw("Horizontal");  
         float moveZ = Input.GetAxisRaw("Vertical");
 
         if (moveX != 0 || moveZ != 0)
