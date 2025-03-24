@@ -4,73 +4,83 @@ using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class ChoiceDialog : MonoBehaviour
 {
-    public GameObject dialogPanel;
+      public GameObject dialogPanel;
     public Text messageText;
     public Button YesButton;
     public Button NoButton;
     public string sceneToLoad;
-    bool isPlayer = false;
-    private bool hasKey = false;
+    public int doorKeyID; // กุญแจที่ต้องใช้เปิดประตู
+    private bool isPlayer = false;
+    private PlayerInventory playerInventory;
+
     void Start()
     {
         dialogPanel.SetActive(false);
-
         YesButton.onClick.AddListener(OnYesClicked);
         NoButton.onClick.AddListener(OnNoClicked);
     }
 
     void Update()
     {
-        if(isPlayer && Input.GetKeyDown(KeyCode.F))
+        if (isPlayer && Input.GetKeyDown(KeyCode.F))
         {
-            Showdialog();
+            ShowDialog();
         }
     }
 
-    public void Showdialog()
+    private void ShowDialog()
     {
         dialogPanel.SetActive(true);
-        messageText.text = "ไปมั้ย";
+        messageText.text = "ประตูนี้จะข้ามด่านไปเลยแน่ใจมั้ยที่จะเข้าประตูนี้ คิดว่าเกินความสามารถตัวเองมั้ย";
     }
 
-    void OnYesClicked()
+    private void OnYesClicked()
     {
-        // if (hasKey)
-        // {
-        //     SceneManager.LoadScene();
-        // }
-        // else
-        // {
-            
-        // }
+        if (playerInventory != null)
+        {
+            if (playerInventory.HasKey(doorKeyID))
+            {
+                
+                Debug.Log("ไป");
+                //SceneManager.LoadScene(sceneToLoad);
+            }
+            else if (playerInventory.HasAnyKey()) 
+            {
+                
+                messageText.text = "ฮั่นแน่ ผิดดอกนะจ๊ะ";
+            }
+            else
+            {
+                
+                messageText.text = "อยากเข้าไปก็ไปหากุญแจมา";
+            }
+        }
     }
 
-    void OnNoClicked()
+    private void OnNoClicked()
     {
         dialogPanel.SetActive(false);
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if(other.CompareTag("Player"))
-        {
-            Debug.Log("Player");
-            isPlayer = true;
-        } 
-    }
-
-
-    void OnTriggerExit(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            isPlayer = false;
+            isPlayer = true;
+            playerInventory = other.GetComponent<PlayerInventory>();
         }
     }
-    public void PickupKey()
+
+    private void OnTriggerExit(Collider other)
     {
-        hasKey = true;
+        if (other.CompareTag("Player"))
+        {
+            isPlayer = false;
+            playerInventory = null;
+        }
     }
 }
