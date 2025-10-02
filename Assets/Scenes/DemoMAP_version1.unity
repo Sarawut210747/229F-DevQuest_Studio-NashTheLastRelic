@@ -51955,13 +51955,6 @@ Transform:
   - {fileID: 855387798}
   - {fileID: 774431769}
   - {fileID: 295991815}
-<<<<<<< HEAD
-=======
-  - {fileID: 768754165}
-  - {fileID: 2107771411}
-  - {fileID: 1030758226}
-  - {fileID: 507201655}
->>>>>>> parent of d4b512d (MAP1_90%)
   - {fileID: 593101412}
   - {fileID: 616863463}
   - {fileID: 1979120224}
@@ -70553,8 +70546,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.000001, y: 4, z: 0.19999996}
   m_Center: {x: 1.9999967, y: 2, z: 0.00000385195}
-<<<<<<< HEAD
-=======
 --- !u!1 &1985057546
 GameObject:
   m_ObjectHideFlags: 0
@@ -70663,7 +70654,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> parent of d4b512d (MAP1_90%)
 --- !u!1001 &1987117665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76237,11 +76227,6 @@ SceneRoots:
   - {fileID: 541032238}
   - {fileID: 230647498}
   - {fileID: 49841465}
-<<<<<<< HEAD
-  - {fileID: 1114199568}
-  - {fileID: 211272467}
-  - {fileID: 1430209100}
-=======
   - {fileID: 4002509}
   - {fileID: 701395475}
   - {fileID: 161772300}
@@ -76249,4 +76234,3 @@ SceneRoots:
   - {fileID: 2147310230}
   - {fileID: 846011727}
   - {fileID: 1985057550}
->>>>>>> parent of d4b512d (MAP1_90%)
